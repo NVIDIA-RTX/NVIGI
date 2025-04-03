@@ -1,0 +1,9 @@
+[submodule "NVIGI-Core"]
+	path = NVIGI-Core
+	url = ../NVIGI-Core
+[submodule "NVIGI-Plugins"]
+	path = NVIGI-Plugins
+	url = ../NVIGI-Plugins
+[submodule "NVIGI-3d-sample"]
+	path = NVIGI-3d-sample
+	url = ../NVIGI-3d-sample
