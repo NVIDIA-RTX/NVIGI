@@ -7,6 +7,3 @@
 [submodule "NVIGI-3d-sample"]
 	path = NVIGI-3d-sample
 	url = ../NVIGI-3d-sample
-[submodule "NVIGI-UEPlugin"]
-	path = NVIGI-UEPlugin
-	url = ../nvigi-ueplugin
