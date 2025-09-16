@@ -1,7 +1,7 @@
 # NVIDIA In-Game Inference AI Kit
-Version 1.2.0 Release
+Version 1.3.0 Release
 
-If you are getting started with the NVIDIA In-Game Inference AI SDK, this repo is NOT for you.  Most NVVIGI developers will not need to build the SDK from source; they will be able to use the pre-built SDK package, available from the [NVIDIA In-Game Inference SDK Main Page](https://developer.nvidia.com/rtx/in-game-inferencing).  New NVIGI developers should invariably start with binary packs from that page, as building from source will require components from these binary packs.
+If you are getting started with the NVIDIA In-Game Inference AI SDK, this repo is NOT for you.  Most NVIGI developers will not need to build the SDK from source; they will be able to use the pre-built SDK package, available from the [NVIDIA In-Game Inference SDK Main Page](https://developer.nvidia.com/rtx/in-game-inferencing).  New NVIGI developers should invariably start with binary packs from that page, as building from source will require components from these binary packs.
 
 The repo includes documentation and scripts to make it easy to pull and build the NVIDIA In-Game Inference SDK from source.  It also includes submodule pointers to all of the components for each release.  When cloning this tree, ensure that submodules are initialized and updated recursively, either during cloning (`--recurse-submodules`) or after (`git submodule update --init --recursive`).
 
@@ -13,6 +13,12 @@ In order to build the full source, there are a few binaries that need to be pull
 - The NVIGI GGML D3D12 ASR and GPT plugin DLLs.  These are experimental, and are NOT built via this source pack currently.  However, the command-line samples in the SDK and the 3D Sample may use them.  The instructions below will explain where they should be installed.  As a result, you will need the following DLLs from `nvigi_pack/plugins/sdk/bin/x64/`:
 	- `nvigi.plugin.asr.ggml.d3d12.dll`
 	- `nvigi.plugin.gpt.ggml.d3d12.dll`
+- The NVIGI ASqFlow D3D12 TTS plugin DLL. As with the previous item, this plugin DLL is also experimental, not built via this source pack, and usable by SDK samples. You will need to copy the following DLL from `nvigi_pack/plugins/sdk/bin/x64/`:
+  - `nvigi.plugin.tts.asqflow-ggml.d3d12.dll`
+
+## Required Model Data
+
+In order to run the 3D sample, you will need a model data tree.  Some of this model data involves licensing and thus cannot be posted to public git servers.  The accepted method of getting models is to download the pre-built NVIGI SDK package as above, and run the `download_data.bat` script in its `data` directory.  The models will be placed in a `nvigi.models` directory in the `data` directory in that package.  Copy the `data/nvigi.models` directory to the `NVIGI-Plugins/data` directory (as `NVIGI-Plugins/data/nvigi.models`) in this source tree, or make a link to it (see below).`
 
 ## MSVC 2022 Min Prerequisites
 
@@ -73,34 +79,16 @@ After running this for the first time on a tree, the following copies of the afo
 
 These must be done before trying to run the command-line samples or proceeding to the next step tp build the 3D Sample.
 
-### `03_build_sample.bat`
-
-This script sets up and builds the specified config of the NVIGI 3D Sample.  It also creates a link to the built, sibling Core Runtime SDK and Plugins directory (as a part of the setup step).
-
-#### Prerequisites
-
-This script must be run from a VS2022 Developmer Command Prompt and can only be run after `01_build_pack_core.bat` and `02_build_pack_plugins.bat` have been run successfully.
-
-#### Running
-
-The script requires a single argument of `Release`, `Debug` or `Production`, e.g.
-
-```
-.\03_build_sample.bat Release
-```
-
-Note that no matter which config is given, the SDK and Core DLLs copied into the `_bin` directory will be whatever was built by `02_build_pack_plugins.bat`
-
 ### Running the Built 3D Sample
 
 The 3D Sample, by default, expects the `nvigi.models` directory to be located in the `nvigi` root directory.  So the easiest way to run the sample is to:
 
 - Download the `nvigi_pack` binary release (likely already done as above)
-- Set up its links with `setup_links.bat`
 - Download its models with `download_data.bat`
 - And make a link to that, e.g.
 
 ```
+cd data
 mklink /j nvigi.models <nvigi_pack>\nvigi.models
 ```
-The 3D Sample should then run successfully by double-clicking the `NVIGISample.exe` in the `_bin` directory.
+The 3D Sample should then run successfully by double-clicking the `nvigi.3d.exe` in the `_bin` directory.
