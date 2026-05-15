@@ -14,5 +14,5 @@ mklink /j nvigi_core ..\NVIGI-Core
 call .\setup.bat
 call .\build.bat -%Cfg%
 call .\copy_sdk_binaries.bat %Cfg%
-call .\copy_3rd_party.bat
+call .\copy_3rd_party_win_x64.bat %Cfg%
 popd

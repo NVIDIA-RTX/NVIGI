@@ -1,5 +1,5 @@
 # NVIDIA In-Game Inference AI Kit
-Version 1.5.0 Release
+Version 1.6.0 Release
 
 If you are getting started with the NVIDIA In-Game Inference AI SDK, this repo is NOT for you.  Most NVIGI developers will not need to build the SDK from source; they will be able to use the pre-built SDK package, available from the [NVIDIA In-Game Inference SDK Main Page](https://developer.nvidia.com/rtx/in-game-inferencing).  New NVIGI developers should invariably start with binary packs from that page, as building from source will require components from these binary packs.
 
