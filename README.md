@@ -1,5 +1,5 @@
 # NVIDIA In-Game Inference AI Kit
-Version 1.6.1 Release
+Version 1.7.0 Release
 
 If you are getting started with the NVIDIA In-Game Inference AI SDK, this repo is NOT for you.  Most NVIGI developers will not need to build the SDK from source; they will be able to use the pre-built SDK package, available from the [NVIDIA In-Game Inference SDK Main Page](https://developer.nvidia.com/rtx/in-game-inferencing).  New NVIGI developers should invariably start with binary packs from that page, as building from source will require components from these binary packs.
 
@@ -14,8 +14,8 @@ In order to build the full source, there are a few binaries that need to be pull
 - The NVIGI GGML D3D12 ASR and GPT plugin DLLs.  These are experimental, and are NOT built via this source pack currently.  However, the command-line samples in the SDK and the 3D Sample may use them.  The instructions below will explain where they should be installed.  As a result, you will need the following DLLs from `<PATH_TO_NVIGI_SDK_PACK>/bin/x64/`:
 	- `nvigi.plugin.asr.ggml.d3d12.dll`
 	- `nvigi.plugin.gpt.ggml.d3d12.dll`
-- The NVIGI ASqFlow D3D12 TTS plugin DLL. As with the previous item, this plugin DLL is also experimental, not built via this source pack, and usable by SDK samples. You will need to copy the following DLL from `<PATH_TO_NVIGI_SDK_PACK>/bin/x64/`:
-  - `nvigi.plugin.tts.asqflow-ggml.d3d12.dll`
+- The NVIGI Chatterbox D3D12 TTS plugin DLL. As with the previous item, this plugin DLL is also experimental, not built via this source pack, and usable by SDK samples. You will need to copy the following DLL from `<PATH_TO_NVIGI_SDK_PACK>/bin/x64/`:
+  - `nvigi.plugin.tts.chatterbox-ggml.d3d12.dll`
 
 ## Required Model Data
 
@@ -75,8 +75,8 @@ The script requires a single argument of `Release`, `Debug` or `Production`, e.g
 
 After running this for the first time on a tree, the following copies of the aforementioned external DLLs is required:
 
-- Agility SDK `D3D12Core.dll` - copy to SDK bin in `NVIGI-Plugins/bin/x64/D3D12/` (the leaf directory `D3D12` will not exist prior to this)
-- Plugin DLLs `dxcompiler.dll`, `dxil.dll`, `nvigi.plugin.asr.ggml.d3d12.dll`, `nvigi.plugin.gpt.ggml.d3d12.dll` and `nvigi.plugin.tts.asqflow-ggml.d3d12.dll` - copy to SDK bin in `NVIGI-Plugins/bin/x64/`
+- Agility SDK `D3D12Core.dll` - copy to SDK bin in `NVIGI-Plugins/bin/x64/{Release,Debug,Production}/D3D12/` (the leaf directory `D3D12` will not exist prior to this)
+- Plugin DLLs `dxcompiler.dll`, `dxil.dll`, `nvigi.plugin.asr.ggml.d3d12.dll`, `nvigi.plugin.gpt.ggml.d3d12.dll` and `nvigi.plugin.tts.chatterbox-ggml.d3d12.dll` - copy to SDK bin in `NVIGI-Plugins/bin/x64/{Release,Debug,Production}/`
 
 These must be done before trying to run the command-line samples or proceeding to the next step tp build the 3D Sample.
 
